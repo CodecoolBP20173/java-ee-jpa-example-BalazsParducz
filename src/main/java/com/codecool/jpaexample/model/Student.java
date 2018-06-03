@@ -15,15 +15,22 @@ public class Student {
 
     private String name;
 
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
 
+    @Transient
     private long age;
 
     @OneToOne
     private Address address;
+
+    @ElementCollection
+    @CollectionTable(name = "Phone")
+    @Column(name = "phone")
+    List<String> phoneNumber;
 
     public Student() {
     }
